@@ -24,41 +24,51 @@
 
 @implementation TRSDialScrollView
 
+
+- (void)commonInit
+{
+    _max = 0;
+    _min = 0;
+    
+    float contentHeight = self.bounds.size.height;
+    
+    _overlayImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    
+    // Set the default frame size
+    // Don't worry, we will be changing this later
+    _dialView = [[TRSDialView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, contentHeight)];
+    
+    // Don't let the container handle User Interaction
+    [_dialView setUserInteractionEnabled:NO];
+    
+    _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    
+    // Disable scroll bars
+    [_scrollView setShowsHorizontalScrollIndicator:NO];
+    [_scrollView setClipsToBounds:YES];
+    _scrollView.contentSize = CGSizeMake(_dialView.frame.size.width, contentHeight);
+    
+    
+    // Setup the ScrollView
+    [_scrollView setBounces:NO];
+    [_scrollView setBouncesZoom:NO];
+    
+    [_scrollView addSubview:_dialView];
+    [self addSubview:_scrollView];
+
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        _max = 0;
-        _min = 0;
-        
-        float contentHeight = self.bounds.size.height;
-        
-        _overlayImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        
-        // Set the default frame size
-        // Don't worry, we will be changing this later
-        _dialView = [[TRSDialView alloc] initWithFrame:CGRectMake(0, 0, 640, contentHeight)];
-        
-        // Don't let the container handle User Interaction
-        [_dialView setUserInteractionEnabled:NO];
-        
-        _scrollView = [[UIScrollView alloc] initWithFrame:frame];
-        
-        // Disable scroll bars
-        [_scrollView setShowsHorizontalScrollIndicator:NO];
-        [_scrollView setClipsToBounds:YES];
-        _scrollView.contentSize = CGSizeMake(_dialView.frame.size.width, contentHeight);
-        
-        [_scrollView addSubview:_dialView];
-        [self addSubview:_scrollView];
-        
-        [_dialView setNeedsDisplay];
-
+        [self commonInit];
     }
     
     return self;
 }
+
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -66,41 +76,7 @@
     
     if (self) {
         
-        self.max = 0;
-        self.min = 0;
-        
-        float contentHeight = self.bounds.size.height;
-        
-        self.overlayImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        
-        // Set the default frame size
-        // Don't worry, we will be changing this later
-        self.dialView = [[TRSDialView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, contentHeight)];
-        
-        // Don't let the container handle User Interaction
-        [self.dialView setUserInteractionEnabled:NO];
-        
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        
-        // Disable scroll bars
-        [self.scrollView setShowsHorizontalScrollIndicator:NO];
-        [self.scrollView setClipsToBounds:YES];
-        self.scrollView.contentSize = CGSizeMake(self.dialView.frame.size.width, contentHeight);
-        
-        [self.scrollView addSubview:self.dialView];
-        [self addSubview:_scrollView];
-        
-        // Setup the ScrollView
-        [self.scrollView setBounces:NO];
-        [self.scrollView setBouncesZoom:NO];
-        
-        [self.dialView setContentMode:UIViewContentModeRedraw];
-        [self.scrollView setContentMode:UIViewContentModeRedraw];
-        
-
-
-        
-        [self.dialView setNeedsDisplay];
+        [self commonInit];
         
     }
     

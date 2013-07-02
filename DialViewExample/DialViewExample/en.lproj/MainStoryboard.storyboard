@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="redraw" id="0Oj-BT-lqT" customClass="TRSDialScrollView">
-                                <rect key="frame" x="0.0" y="234" width="320" height="80"/>
+                                <rect key="frame" x="60" y="234" width="198" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                         </subviews>
