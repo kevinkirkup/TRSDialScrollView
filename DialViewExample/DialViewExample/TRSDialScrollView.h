@@ -15,6 +15,12 @@
  */
 @property (assign, nonatomic) NSInteger currentValue;
 
+/**
+ * The UIScrollViewDelegate for this class
+ */
+@property (weak, nonatomic) id<UIScrollViewDelegate> delegate;
+
+
 #pragma mark - Generic Properties
 
 /**

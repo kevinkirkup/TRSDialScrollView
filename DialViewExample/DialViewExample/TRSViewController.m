@@ -55,26 +55,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UIScrollViewDelegate
 
-- (CGPoint)scrollToOffset:(CGPoint)starting {
-    
-    // Initialize the end point with the starting position
-    CGPoint ending = starting;
-    
-    // Calculate the ending offset
-    ending.x = roundf(starting.x / 15.0) * 15.0;
-    
-    NSLog(@"starting=%f, ending=%f", starting.x, ending.x);
-    
-    return ending;
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-    *targetContentOffset = [self scrollToOffset:(*targetContentOffset)];
-}
 
 @end

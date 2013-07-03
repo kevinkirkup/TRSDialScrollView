@@ -9,20 +9,18 @@
 
 #import "TRSDialView.h"
 
-#define MIN_DIAL_WIDTH  (320.0)
-#define DIAL_HEIGHT     (80.0)
+#define DEFAULT_FONT_NAME       (@"HelveticaNeue")
+#define DEFAULT_LABEL_FONT_SIZE (30)
 
 
+#define DEFAULT_MINOR_TICK_DISTANCE   (16)
+#define DEFAULT_MINOR_TICK_LENGTH     (19)
+#define DEFAULT_MINOR_TICK_WIDTH      (1.0)
 
-#define LABEL_FONT_SIZE (30)
+#define DEFAULT_MAJOR_TICK_DIVISIONS  (10)
+#define DEFAULT_MAJOR_TICK_LENGTH     (31)
+#define DEFAULT_MAJOR_TICK_WIDTH      (4.0)
 
-#define MINOR_TICK_DISTANCE  (16)
-#define MINOR_TICK_LENGTH    (19)
-#define MINOR_TICK_WIDTH     (1.0)
-
-#define MAJOR_TICK_DIVISIONS  (10)
-#define MAJOR_TICK_LENGTH     (31)
-#define MAJOR_TICK_WIDTH      (4.0)
 
 
 @interface TRSDialView ()
@@ -44,23 +42,24 @@
         _minimum = 0;
         _maximum = 0;
 
-        _minorTicksPerMajorTick = MAJOR_TICK_DIVISIONS;
-        _minorTickDistance = MINOR_TICK_DISTANCE;
+        _minorTicksPerMajorTick = DEFAULT_MAJOR_TICK_DIVISIONS;
+        _minorTickDistance = DEFAULT_MINOR_TICK_DISTANCE;
 
         _backgroundColor = [UIColor grayColor];
 
         _labelStrokeColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
         _labelFillColor = [UIColor whiteColor];
 
-        _labelFont = [UIFont fontWithName:@"HelveticaNeue" size:LABEL_FONT_SIZE];
+        _labelFont = [UIFont fontWithName:DEFAULT_FONT_NAME
+                                     size:DEFAULT_LABEL_FONT_SIZE];
 
         _minorTickColor = [UIColor colorWithWhite:0.158 alpha:1.000];
-        _minorTickLength = MINOR_TICK_LENGTH;
-        _minorTickWidth = MINOR_TICK_WIDTH;
+        _minorTickLength = DEFAULT_MINOR_TICK_LENGTH;
+        _minorTickWidth = DEFAULT_MINOR_TICK_WIDTH;
 
         _majorTickColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
-        _majorTickLength = MAJOR_TICK_LENGTH;
-        _majorTickWidth = MAJOR_TICK_WIDTH;
+        _majorTickLength = DEFAULT_MAJOR_TICK_LENGTH;
+        _majorTickWidth = DEFAULT_MAJOR_TICK_WIDTH;
 
         _shadowColor = [UIColor colorWithWhite:1.000 alpha:1.000];
         _shadowOffset = CGSizeMake(1, 1);
@@ -206,8 +205,9 @@
     return self.superview.frame.size.width / 2;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+/**
+ * Perform Custom drawing
+ */
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
@@ -223,11 +223,11 @@
     // Add the tick Marks
     for (int i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
 
-        // Stop at the end
+        // After
         if (i > (self.frame.size.width - self.leading))
             break;
 
-        // Draw regular ticks
+        // Middle
         else
             [self drawTicksWithContext:context atX:i];
 

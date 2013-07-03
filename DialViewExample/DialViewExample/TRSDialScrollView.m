@@ -9,7 +9,7 @@
 #import "TRSDialView.h"
 #import "TRSDialScrollView.h"
 
-@interface TRSDialScrollView () {
+@interface TRSDialScrollView () <UIScrollViewDelegate> {
     
     NSInteger _currentValue;
 }
@@ -52,6 +52,7 @@
     // Setup the ScrollView
     [_scrollView setBounces:NO];
     [_scrollView setBouncesZoom:NO];
+    _scrollView.delegate = self;
     
     [_scrollView addSubview:_dialView];
     [self addSubview:_scrollView];
@@ -95,6 +96,98 @@
     
     self.scrollView.contentSize = CGSizeMake(self.dialView.frame.size.width, self.bounds.size.height);
 }
+
+- (CGPoint)scrollToOffset:(CGPoint)starting {
+    
+    // Initialize the end point with the starting position
+    CGPoint ending = starting;
+    
+    // Calculate the ending offset
+    ending.x = roundf(starting.x / self.minorTickDistance) * self.minorTickDistance;
+    
+    NSLog(@"starting=%f, ending=%f", starting.x, ending.x);
+    
+    return ending;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewWillBeginDragging:scrollView];
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    // Make sure that we scroll to the nearest tick mark on the dial.
+    *targetContentOffset = [self scrollToOffset:(*targetContentOffset)];
+    
+    [self.delegate scrollViewWillEndDragging:scrollView
+                                withVelocity:velocity
+                         targetContentOffset:targetContentOffset];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [self.delegate scrollViewDidEndDragging:scrollView
+                             willDecelerate:decelerate];
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+    return [self.delegate scrollViewShouldScrollToTop:scrollView];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewDidScrollToTop:scrollView];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewWillBeginDecelerating:scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewDidEndDecelerating:scrollView];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    [self.delegate viewForZoomingInScrollView:scrollView];
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+    [self.delegate scrollViewWillBeginZooming:scrollView
+                                     withView:view];
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    [self.delegate scrollViewDidEndZooming:scrollView
+                                  withView:view
+                                   atScale:scale];
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewDidZoom:scrollView];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [self.delegate scrollViewDidEndScrollingAnimation:scrollView];
+}
+
 
 #pragma mark - Properties
 
