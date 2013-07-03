@@ -55,6 +55,11 @@
 @property (strong, nonatomic) UIColor *labelStrokeColor;
 
 /**
+ * The width of the stroke line used to trace the Label text
+ */
+@property (assign, nonatomic) CGFloat labelStrokeWidth;
+
+/**
  * The tick label fill color
  */
 @property (strong, nonatomic) UIColor *labelFillColor;

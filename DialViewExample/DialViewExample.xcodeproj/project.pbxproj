@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		202273E017824EFC00EBCB18 /* TRSDialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202273DF17824EFC00EBCB18 /* TRSDialScrollView.m */; };
+		202273E41783CFA800EBCB18 /* DialShadding.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E21783CFA800EBCB18 /* DialShadding.png */; };
+		202273E51783CFA800EBCB18 /* DialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E31783CFA800EBCB18 /* DialBackground.png */; };
 		20FF7D95177FB28000E8AF5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D94177FB28000E8AF5A /* UIKit.framework */; };
 		20FF7D97177FB28000E8AF5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D96177FB28000E8AF5A /* Foundation.framework */; };
 		20FF7D99177FB28000E8AF5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D98177FB28000E8AF5A /* CoreGraphics.framework */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		202273DE17824EFC00EBCB18 /* TRSDialScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRSDialScrollView.h; sourceTree = "<group>"; };
 		202273DF17824EFC00EBCB18 /* TRSDialScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSDialScrollView.m; sourceTree = "<group>"; };
+		202273E21783CFA800EBCB18 /* DialShadding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialShadding.png; sourceTree = "<group>"; };
+		202273E31783CFA800EBCB18 /* DialBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialBackground.png; sourceTree = "<group>"; };
 		20FF7D91177FB28000E8AF5A /* DialViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FF7D94177FB28000E8AF5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		20FF7D96177FB28000E8AF5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +114,8 @@
 		20FF7D9A177FB28000E8AF5A /* DialViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				202273E21783CFA800EBCB18 /* DialShadding.png */,
+				202273E31783CFA800EBCB18 /* DialBackground.png */,
 				202273E117824F0400EBCB18 /* DialScrollView */,
 				20FF7DA3177FB28000E8AF5A /* TRSAppDelegate.h */,
 				20FF7DA4177FB28000E8AF5A /* TRSAppDelegate.m */,
@@ -192,6 +198,8 @@
 				20FF7DA9177FB28000E8AF5A /* Default@2x.png in Resources */,
 				20FF7DAB177FB28000E8AF5A /* Default-568h@2x.png in Resources */,
 				20FF7DAE177FB28000E8AF5A /* MainStoryboard.storyboard in Resources */,
+				202273E41783CFA800EBCB18 /* DialShadding.png in Resources */,
+				202273E51783CFA800EBCB18 /* DialBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

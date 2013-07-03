@@ -25,10 +25,12 @@
     [[TRSDialScrollView appearance] setMinorTicksPerMajorTick:10];
     [[TRSDialScrollView appearance] setMinorTickDistance:16];
     
-    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0]];
+    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialBackground"]]];
+    [[TRSDialScrollView appearance] setOverlayColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialShadding"]]];
     
-    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000]];
-    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor whiteColor]];
+    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithWhite:0.098 alpha:1.000]];
+    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.5f];
+    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor colorWithRed:0.298 green:1.000 blue:0.556 alpha:1.000]];
     
     [[TRSDialScrollView appearance] setLabelFont:[UIFont fontWithName:@"Avenir" size:20]];
     

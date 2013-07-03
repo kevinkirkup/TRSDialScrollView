@@ -17,7 +17,7 @@
 @property (assign, nonatomic) NSInteger min;
 @property (assign, nonatomic) NSInteger max;
 @property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) UIImageView *overlayImageView;
+@property (strong, nonatomic) UIView *overlayView;
 @property (strong, nonatomic) TRSDialView *dialView;
 
 @end
@@ -32,7 +32,8 @@
     
     float contentHeight = self.bounds.size.height;
     
-    _overlayImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    _overlayView = [[UIView alloc] initWithFrame:self.bounds];
+    [_overlayView setUserInteractionEnabled:NO];
     
     // Set the default frame size
     // Don't worry, we will be changing this later
@@ -56,6 +57,7 @@
     
     [_scrollView addSubview:_dialView];
     [self addSubview:_scrollView];
+    [self addSubview:_overlayView];
 
 }
 
@@ -236,6 +238,16 @@
     self.dialView.labelFillColor = labelFillColor;
 }
 
+- (void)setLabelStrokeWidth:(CGFloat)labelStrokeWidth
+{
+    self.dialView.labelStrokeWidth = labelStrokeWidth;
+}
+
+- (CGFloat)labelStrokeWidth
+{
+    return self.dialView.labelStrokeWidth;
+}
+
 - (UIColor *)labelFillColor
 {
     return self.dialView.labelFillColor;
@@ -343,7 +355,7 @@
 
 - (void)setOverlayColor:(UIColor *)overlayColor
 {
-    self.overlayColor = overlayColor;
+    self.overlayView.backgroundColor = overlayColor;
 }
 
 - (UIColor *)overlayColor

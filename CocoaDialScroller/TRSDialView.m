@@ -44,6 +44,7 @@
 
         _labelStrokeColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
         _labelFillColor = [UIColor whiteColor];
+        _labelStrokeWidth = 1.0;
 
         _labelFont = [UIFont fontWithName:DEFAULT_FONT_NAME
                                      size:DEFAULT_LABEL_FONT_SIZE];
@@ -98,8 +99,21 @@
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
 
-    CGContextSetLineWidth(context, 1.0);
-    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetLineWidth(context, self.labelStrokeWidth);
+    
+    // Set the drawing mode based on the presence of the file and stroke colors
+    CGTextDrawingMode mode = kCGTextFillStroke;
+    
+    if ((fillColor == nil) && (strokeColor == nil))
+        mode = kCGTextInvisible;
+        
+    else if (fillColor == nil)
+        mode = kCGTextStroke;
+    
+    else if (strokeColor == nil)
+        mode = kCGTextFill;
+    
+    CGContextSetTextDrawingMode(context, mode);
 
     [text drawInRect:CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height)
             withFont:self.labelFont
