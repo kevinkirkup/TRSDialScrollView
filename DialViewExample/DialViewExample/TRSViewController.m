@@ -46,6 +46,11 @@
     
     [_dialView setDialRangeFrom:0 to:50];
     
+    _dialView.currentValue = 10;
+
+    
+    NSLog(@"Current Value = %i", _dialView.currentValue);
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

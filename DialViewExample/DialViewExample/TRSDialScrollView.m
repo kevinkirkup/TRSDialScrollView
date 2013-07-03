@@ -162,7 +162,7 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    [self.delegate viewForZoomingInScrollView:scrollView];
+    return [self.delegate viewForZoomingInScrollView:scrollView];
 }
 
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
@@ -355,14 +355,22 @@
     
     // Check to make sure the value is within the available range
     if ((newValue < _min) || (newValue > _max))
-        _currentValue = 0;
+        _currentValue = _min;
     
     else
         _currentValue = newValue;
+    
+    // Update the content offset based on new value
+    CGPoint offset = self.scrollView.contentOffset;
+
+    offset.x = (newValue - self.dialView.minimum) * self.dialView.minorTickDistance;
+    
+    self.scrollView.contentOffset = offset;
 }
 
-- (NSInteger)currentValue {
-    return _currentValue;
+- (NSInteger)currentValue
+{
+    return roundf(self.scrollView.contentOffset.x / self.dialView.minorTickDistance) + self.dialView.minimum;
 }
 
 @end

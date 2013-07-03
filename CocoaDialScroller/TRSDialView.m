@@ -25,11 +25,6 @@
 
 @interface TRSDialView ()
 
-/**
- * Method to set the range of values to display
- */
-- (void)setDialRangeFrom:(NSInteger)from to:(NSInteger)to;
-
 @end
 
 @implementation TRSDialView

@@ -11,10 +11,16 @@
 
 @interface TRSDialView : UIView <UIAppearance>
 
+#pragma mark - Methods
+
 /**
  * Method to set the range of values to display
  */
 - (void)setDialRangeFrom:(NSInteger)from to:(NSInteger)to;
+
+#pragma mark - Dial Properties
+
+@property (assign, readonly, nonatomic) NSInteger leading;
 
 /**
  * The maximum value to display in the dial
