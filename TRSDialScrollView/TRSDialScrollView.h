@@ -15,6 +15,12 @@
  */
 @property (assign, nonatomic) NSInteger currentValue;
 
+/**
+ * The UIScrollViewDelegate for this class
+ */
+@property (weak, nonatomic) id<UIScrollViewDelegate> delegate;
+
+
 #pragma mark - Generic Properties
 
 /**
@@ -44,6 +50,11 @@
  * The tick label stroke color
  */
 @property (strong, nonatomic) UIColor *labelStrokeColor UI_APPEARANCE_SELECTOR;
+
+/**
+ * The width of the stroke line used to trace the Label text
+ */
+@property (assign, nonatomic) CGFloat labelStrokeWidth UI_APPEARANCE_SELECTOR;
 
 /**
  * The tick label fill color
