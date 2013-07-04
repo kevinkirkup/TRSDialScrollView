@@ -9,32 +9,21 @@
 
 #import "TRSDialView.h"
 
-#define MIN_DIAL_WIDTH  (320.0)
-#define DIAL_HEIGHT     (80.0)
+#define DEFAULT_FONT_NAME       (@"HelveticaNeue")
+#define DEFAULT_LABEL_FONT_SIZE (30)
 
 
+#define DEFAULT_MINOR_TICK_DISTANCE   (16)
+#define DEFAULT_MINOR_TICK_LENGTH     (19)
+#define DEFAULT_MINOR_TICK_WIDTH      (1.0)
 
-#define LABEL_FONT_SIZE (30)
+#define DEFAULT_MAJOR_TICK_DIVISIONS  (10)
+#define DEFAULT_MAJOR_TICK_LENGTH     (31)
+#define DEFAULT_MAJOR_TICK_WIDTH      (4.0)
 
-#define MINOR_TICK_DISTANCE  (16)
-#define MINOR_TICK_LENGTH    (19)
-#define MINOR_TICK_WIDTH     (1.0)
-
-#define MAJOR_TICK_DIVISIONS  (10)
-#define MAJOR_TICK_LENGTH     (31)
-#define MAJOR_TICK_WIDTH      (4.0)
 
 
 @interface TRSDialView ()
-
-@property (readonly, nonatomic) CGFloat labelHeight;
-@property (readonly, nonatomic) CGFloat labelWidth;
-@property (readonly, nonatomic) CGFloat lableYOffset;
-
-/**
- * Method to set the range of values to display
- */
-- (void)setDialRangeFrom:(NSInteger)from to:(NSInteger)to;
 
 @end
 
@@ -48,23 +37,25 @@
         _minimum = 0;
         _maximum = 0;
 
-        _minorTicksPerMajorTick = MAJOR_TICK_DIVISIONS;
-        _minorTickDistance = MINOR_TICK_DISTANCE;
+        _minorTicksPerMajorTick = DEFAULT_MAJOR_TICK_DIVISIONS;
+        _minorTickDistance = DEFAULT_MINOR_TICK_DISTANCE;
 
         _backgroundColor = [UIColor grayColor];
 
         _labelStrokeColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
         _labelFillColor = [UIColor whiteColor];
+        _labelStrokeWidth = 1.0;
 
-        _labelFont = [UIFont fontWithName:@"HelveticaNeue" size:LABEL_FONT_SIZE];
+        _labelFont = [UIFont fontWithName:DEFAULT_FONT_NAME
+                                     size:DEFAULT_LABEL_FONT_SIZE];
 
         _minorTickColor = [UIColor colorWithWhite:0.158 alpha:1.000];
-        _minorTickLength = MINOR_TICK_LENGTH;
-        _minorTickWidth = MINOR_TICK_WIDTH;
+        _minorTickLength = DEFAULT_MINOR_TICK_LENGTH;
+        _minorTickWidth = DEFAULT_MINOR_TICK_WIDTH;
 
         _majorTickColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
-        _majorTickLength = MAJOR_TICK_LENGTH;
-        _majorTickWidth = MAJOR_TICK_WIDTH;
+        _majorTickLength = DEFAULT_MAJOR_TICK_LENGTH;
+        _majorTickWidth = DEFAULT_MAJOR_TICK_WIDTH;
 
         _shadowColor = [UIColor colorWithWhite:1.000 alpha:1.000];
         _shadowOffset = CGSizeMake(1, 1);
@@ -83,26 +74,11 @@
     // Resize the frame of the view
     CGRect frame = self.frame;
     
-    frame.size.width = (_maximum - _minimum) * _minorTickDistance + MIN_DIAL_WIDTH;
+    frame.size.width = (_maximum - _minimum) * _minorTickDistance + self.superview.frame.size.width;
     
     NSLog(@"frame = %@", NSStringFromCGRect(frame));
     
     self.frame = frame;
-}
-
-- (CGFloat)labelHeight
-{
-    return 20;
-}
-
-- (CGFloat)labelYOffset
-{
-    return (self.majorTickLength + (self.labelHeight / 2));
-}
-
-- (CGFloat)labelWidth
-{
-    return 60;
 }
 
 #pragma mark - Drawing
@@ -112,17 +88,34 @@
                         text:(NSString *)text
                    fillColor:(UIColor *)fillColor
                  strokeColor:(UIColor *)strokeColor {
+    
+    CGSize boundingBox = [text sizeWithFont:self.labelFont];
+    
+    CGFloat label_y_offset = self.majorTickLength + (boundingBox.height / 2);
 
     // We want the label to be centered on the specified x value
-    NSInteger label_x = point.x - (self.labelWidth / 2);
+    NSInteger label_x = point.x - (boundingBox.width / 2);
 
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
 
-    CGContextSetLineWidth(context, 1.0);
-    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetLineWidth(context, self.labelStrokeWidth);
+    
+    // Set the drawing mode based on the presence of the file and stroke colors
+    CGTextDrawingMode mode = kCGTextFillStroke;
+    
+    if ((fillColor == nil) && (strokeColor == nil))
+        mode = kCGTextInvisible;
+        
+    else if (fillColor == nil)
+        mode = kCGTextStroke;
+    
+    else if (strokeColor == nil)
+        mode = kCGTextFill;
+    
+    CGContextSetTextDrawingMode(context, mode);
 
-    [text drawInRect:CGRectMake(label_x, point.y + self.labelYOffset, self.labelWidth, self.labelHeight)
+    [text drawInRect:CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height)
             withFont:self.labelFont
        lineBreakMode:NSLineBreakByTruncatingTail
            alignment:NSTextAlignmentCenter];
@@ -162,27 +155,7 @@
 
 }
 
-
-- (void)drawDisabledTicksWithContext:(CGContextRef)context atX:(int)x
-{
-    CGPoint point = CGPointMake(x, 0);
-
-    if ([self isMajorTick:x])
-        [self drawMajorTickWithContext:context
-                               atPoint:point
-                             withColor:[UIColor clearColor]
-                                 width:self.majorTickWidth
-                                length:self.majorTickLength];
-
-    else
-        [self drawMinorTickWithContext:context
-                               atPoint:point
-                             withColor:[UIColor clearColor]
-                                 width:self.minorTickWidth
-                                length:self.minorTickLength];
-}
-
-- (void)drawRegularTicksWithContext:(CGContextRef)context atX:(int)x
+- (void)drawTicksWithContext:(CGContextRef)context atX:(int)x
 {
 
     CGPoint point = CGPointMake(x, 0);
@@ -206,7 +179,7 @@
         // 2) Divide by the minor ticks to get the major number
         // 3) Add the minimum to get the current value
         //
-        int value = (point.x - (MIN_DIAL_WIDTH / 2)) / self.minorTickDistance + _minimum;
+        int value = (point.x - self.leading) / self.minorTickDistance + _minimum;
 
         NSString *text = [NSString stringWithFormat:@"%i", value];
         [self drawLabelWithContext:context
@@ -231,14 +204,23 @@
     }
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+/**
+ * The number of pixels that need to be prepended to the begining and ending
+ * of the dial to make sure that the center mark is able to reach all available
+ * values on the range of the dial.
+ */
+- (NSInteger)leading
+{
+    return self.superview.frame.size.width / 2;
+}
+
+/**
+ * Perform Custom drawing
+ */
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    //NSLog(@"frame = %@\n", NSStringFromCGRect(rect));
-    
-    NSLog(@"frame = %@\n", NSStringFromCGRect(self.frame));
+    NSLog(@"frame = %@\n", NSStringFromCGRect(rect));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
 
@@ -246,20 +228,17 @@
     CGContextSetFillColorWithColor(context, self.backgroundColor.CGColor);
 
     CGContextFillRect(context, rect);
-
+    
     // Add the tick Marks
-    for (int i = 0; i < rect.size.width; i += self.minorTickDistance) {
+    for (int i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
 
-        // The first two sets need to be disabled
-        if ((i < (self.superview.frame.size.width / 2)) ||
-            (i > (self.frame.size.width - (self.superview.frame.size.width / 2))))
+        // After
+        if (i > (self.frame.size.width - self.leading))
+            break;
 
-            [self drawDisabledTicksWithContext:context atX:i];
-
-
-        // Draw regular ticks
+        // Middle
         else
-            [self drawRegularTicksWithContext:context atX:i];
+            [self drawTicksWithContext:context atX:i];
 
     }
 }
@@ -270,7 +249,7 @@
  */
 - (BOOL)isMajorTick:(int)x {
 
-    int tick_number = x / self.minorTickDistance;
+    int tick_number = (x - self.leading) / self.minorTickDistance;
 
     return (tick_number % self.minorTicksPerMajorTick) == 0;
 }

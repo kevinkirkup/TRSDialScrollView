@@ -10,7 +10,7 @@
 #import "TRSDialScrollView.h"
 #import "TRSViewController.h"
 
-@interface TRSViewController () <UIScrollViewDelegate>
+@interface TRSViewController ()
 
 @property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
 
@@ -25,26 +25,33 @@
     [[TRSDialScrollView appearance] setMinorTicksPerMajorTick:10];
     [[TRSDialScrollView appearance] setMinorTickDistance:16];
     
-    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0]];
+    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialBackground"]]];
+    [[TRSDialScrollView appearance] setOverlayColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialShadding"]]];
     
-    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000]];
-    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor whiteColor]];
+    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithRed:0.400 green:0.525 blue:0.643 alpha:1.000]];
+    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.1f];
+    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor colorWithRed:0.098 green:0.220 blue:0.396 alpha:1.000]];
     
     [[TRSDialScrollView appearance] setLabelFont:[UIFont fontWithName:@"Avenir" size:20]];
     
-    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor colorWithWhite:0.0 alpha:1.000]];
+    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor colorWithRed:0.800 green:0.553 blue:0.318 alpha:1.000]];
     [[TRSDialScrollView appearance] setMinorTickLength:15.0];
     [[TRSDialScrollView appearance] setMinorTickWidth:1.0];
     
-    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000]];
+    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor colorWithRed:0.098 green:0.220 blue:0.396 alpha:1.000]];
     [[TRSDialScrollView appearance] setMajorTickLength:33.0];
     [[TRSDialScrollView appearance] setMajorTickWidth:2.0];
     
-    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithWhite:0.700 alpha:1.000]];
-    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(1, 1)];
+    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithRed:0.593 green:0.619 blue:0.643 alpha:1.000]];
+    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(0, 1)];
     [[TRSDialScrollView appearance] setShadowBlur:0.9f];
     
     [_dialView setDialRangeFrom:0 to:50];
+    
+    _dialView.currentValue = 10;
+
+    
+    NSLog(@"Current Value = %i", _dialView.currentValue);
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -55,26 +62,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UIScrollViewDelegate
 
-- (CGPoint)scrollToOffset:(CGPoint)starting {
-    
-    // Initialize the end point with the starting position
-    CGPoint ending = starting;
-    
-    // Calculate the ending offset
-    ending.x = roundf(starting.x / 15.0) * 15.0;
-    
-    NSLog(@"starting=%f, ending=%f", starting.x, ending.x);
-    
-    return ending;
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-    *targetContentOffset = [self scrollToOffset:(*targetContentOffset)];
-}
 
 @end
