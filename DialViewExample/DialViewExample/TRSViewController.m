@@ -28,22 +28,22 @@
     [[TRSDialScrollView appearance] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialBackground"]]];
     [[TRSDialScrollView appearance] setOverlayColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialShadding"]]];
     
-    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithWhite:0.098 alpha:1.000]];
-    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.5f];
-    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor colorWithRed:0.298 green:1.000 blue:0.556 alpha:1.000]];
+    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithRed:0.400 green:0.525 blue:0.643 alpha:1.000]];
+    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.1f];
+    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor colorWithRed:0.098 green:0.220 blue:0.396 alpha:1.000]];
     
     [[TRSDialScrollView appearance] setLabelFont:[UIFont fontWithName:@"Avenir" size:20]];
     
-    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor colorWithWhite:0.0 alpha:1.000]];
+    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor colorWithRed:0.800 green:0.553 blue:0.318 alpha:1.000]];
     [[TRSDialScrollView appearance] setMinorTickLength:15.0];
     [[TRSDialScrollView appearance] setMinorTickWidth:1.0];
     
-    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000]];
+    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor colorWithRed:0.098 green:0.220 blue:0.396 alpha:1.000]];
     [[TRSDialScrollView appearance] setMajorTickLength:33.0];
     [[TRSDialScrollView appearance] setMajorTickWidth:2.0];
     
-    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithWhite:0.700 alpha:1.000]];
-    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(1, 1)];
+    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithRed:0.593 green:0.619 blue:0.643 alpha:1.000]];
+    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(0, 1)];
     [[TRSDialScrollView appearance] setShadowBlur:0.9f];
     
     [_dialView setDialRangeFrom:0 to:50];
