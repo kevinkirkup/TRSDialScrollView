@@ -78,9 +78,8 @@
     self = [super initWithCoder:coder];
     
     if (self) {
-        
+
         [self commonInit];
-        
     }
     
     return self;

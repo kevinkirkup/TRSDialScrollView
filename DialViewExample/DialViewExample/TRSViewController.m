@@ -10,7 +10,7 @@
 #import "TRSDialScrollView.h"
 #import "TRSViewController.h"
 
-@interface TRSViewController () <UIScrollViewDelegate>
+@interface TRSViewController ()
 
 @property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
 

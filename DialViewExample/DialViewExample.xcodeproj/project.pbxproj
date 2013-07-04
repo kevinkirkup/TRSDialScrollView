@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		202273E017824EFC00EBCB18 /* TRSDialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202273DF17824EFC00EBCB18 /* TRSDialScrollView.m */; };
+		200E24A417850CE300DF6C0F /* TRSDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E24A017850CE300DF6C0F /* TRSDialView.m */; };
+		200E24A517850CE300DF6C0F /* TRSDialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E24A217850CE300DF6C0F /* TRSDialScrollView.m */; };
 		202273E41783CFA800EBCB18 /* DialShadding.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E21783CFA800EBCB18 /* DialShadding.png */; };
 		202273E51783CFA800EBCB18 /* DialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E31783CFA800EBCB18 /* DialBackground.png */; };
 		20FF7D95177FB28000E8AF5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D94177FB28000E8AF5A /* UIKit.framework */; };
@@ -21,14 +22,15 @@
 		20FF7DAB177FB28000E8AF5A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FF7DAA177FB28000E8AF5A /* Default-568h@2x.png */; };
 		20FF7DAE177FB28000E8AF5A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FF7DAC177FB28000E8AF5A /* MainStoryboard.storyboard */; };
 		20FF7DB1177FB28000E8AF5A /* TRSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FF7DB0177FB28000E8AF5A /* TRSViewController.m */; };
-		20FF7DB9177FB2BE00E8AF5A /* TRSDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FF7DB7177FB2BE00E8AF5A /* TRSDialView.m */; };
 		KIYDQKWBMRKIEYEVRWSLKUDQ /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = HYXIFWTDXJPPRRMDCEPMDTJH /* QuartzCore.framework */; };
 		KNPONLATPTEBRUFEBXNXFHCQ /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = THBDITSPYVFDWQYYBDCIDIXG /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		202273DE17824EFC00EBCB18 /* TRSDialScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRSDialScrollView.h; sourceTree = "<group>"; };
-		202273DF17824EFC00EBCB18 /* TRSDialScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSDialScrollView.m; sourceTree = "<group>"; };
+		200E24A017850CE300DF6C0F /* TRSDialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSDialView.m; path = ../../TRSDialScrollView/TRSDialView.m; sourceTree = "<group>"; };
+		200E24A117850CE300DF6C0F /* TRSDialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSDialView.h; path = ../../TRSDialScrollView/TRSDialView.h; sourceTree = "<group>"; };
+		200E24A217850CE300DF6C0F /* TRSDialScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSDialScrollView.m; path = ../../TRSDialScrollView/TRSDialScrollView.m; sourceTree = "<group>"; };
+		200E24A317850CE300DF6C0F /* TRSDialScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSDialScrollView.h; path = ../../TRSDialScrollView/TRSDialScrollView.h; sourceTree = "<group>"; };
 		202273E21783CFA800EBCB18 /* DialShadding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialShadding.png; sourceTree = "<group>"; };
 		202273E31783CFA800EBCB18 /* DialBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialBackground.png; sourceTree = "<group>"; };
 		20FF7D91177FB28000E8AF5A /* DialViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +49,6 @@
 		20FF7DAD177FB28000E8AF5A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		20FF7DAF177FB28000E8AF5A /* TRSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRSViewController.h; sourceTree = "<group>"; };
 		20FF7DB0177FB28000E8AF5A /* TRSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRSViewController.m; sourceTree = "<group>"; };
-		20FF7DB7177FB2BE00E8AF5A /* TRSDialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSDialView.m; path = ../../CocoaDialScroller/TRSDialView.m; sourceTree = "<group>"; };
-		20FF7DB8177FB2BE00E8AF5A /* TRSDialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSDialView.h; path = ../../CocoaDialScroller/TRSDialView.h; sourceTree = "<group>"; };
 		HYXIFWTDXJPPRRMDCEPMDTJH /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		QMNTBWVDMICWTEJGUAKXRYSM /* SparkInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SparkInspector.framework; path = "/Applications/Spark Inspector.app/Contents/Resources/Frameworks/SparkInspector.framework"; sourceTree = "<group>"; };
 		THBDITSPYVFDWQYYBDCIDIXG /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -70,15 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		202273E117824F0400EBCB18 /* DialScrollView */ = {
+		202273E117824F0400EBCB18 /* TRSDialScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				20FF7DB7177FB2BE00E8AF5A /* TRSDialView.m */,
-				20FF7DB8177FB2BE00E8AF5A /* TRSDialView.h */,
-				202273DE17824EFC00EBCB18 /* TRSDialScrollView.h */,
-				202273DF17824EFC00EBCB18 /* TRSDialScrollView.m */,
+				200E24A017850CE300DF6C0F /* TRSDialView.m */,
+				200E24A117850CE300DF6C0F /* TRSDialView.h */,
+				200E24A217850CE300DF6C0F /* TRSDialScrollView.m */,
+				200E24A317850CE300DF6C0F /* TRSDialScrollView.h */,
 			);
-			name = DialScrollView;
+			name = TRSDialScrollView;
 			sourceTree = "<group>";
 		};
 		20FF7D88177FB28000E8AF5A = {
@@ -116,7 +116,7 @@
 			children = (
 				202273E21783CFA800EBCB18 /* DialShadding.png */,
 				202273E31783CFA800EBCB18 /* DialBackground.png */,
-				202273E117824F0400EBCB18 /* DialScrollView */,
+				202273E117824F0400EBCB18 /* TRSDialScrollView */,
 				20FF7DA3177FB28000E8AF5A /* TRSAppDelegate.h */,
 				20FF7DA4177FB28000E8AF5A /* TRSAppDelegate.m */,
 				20FF7DAC177FB28000E8AF5A /* MainStoryboard.storyboard */,
@@ -213,8 +213,8 @@
 				20FF7DA1177FB28000E8AF5A /* main.m in Sources */,
 				20FF7DA5177FB28000E8AF5A /* TRSAppDelegate.m in Sources */,
 				20FF7DB1177FB28000E8AF5A /* TRSViewController.m in Sources */,
-				20FF7DB9177FB2BE00E8AF5A /* TRSDialView.m in Sources */,
-				202273E017824EFC00EBCB18 /* TRSDialScrollView.m in Sources */,
+				200E24A417850CE300DF6C0F /* TRSDialView.m in Sources */,
+				200E24A517850CE300DF6C0F /* TRSDialScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

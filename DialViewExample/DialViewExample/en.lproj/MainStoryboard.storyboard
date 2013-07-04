@@ -27,6 +27,17 @@
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="TRSDialScrollView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TRSDialScrollView.h"/>
+        </class>
+        <class className="TRSViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TRSViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dialView" candidateClass="TRSDialScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
