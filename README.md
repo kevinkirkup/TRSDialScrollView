@@ -10,7 +10,17 @@ Includes customization through UIAppearance for all major properties.
 ## TODO
 
  * Still need to add support for AutoLayout and it has all of the normal pitfalls when using UIScrollViews with AutoLayout.
- * Add to CocoaPods
+
+## Installation
+
+To add TRSDialView to your project, add the following to your Podfile:
+
+```ruby
+playform :ios
+
+pod 'TRSDialScrollView', '>= 1.0'
+```
+
 
 ## Usage
 
@@ -31,9 +41,6 @@ Includes customization through UIAppearance for all major properties.
 {
   NSInteger value = self.dialView.currentValue;
 }
-
-
-```
 
 ## Credits
 
