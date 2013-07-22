@@ -114,14 +114,24 @@
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (BOOL)respondsToSelector:(SEL)aSelector
 {
-    [self.delegate scrollViewDidScroll:scrollView];
+    if ([super respondsToSelector:aSelector])
+        return YES;
+    
+    if ([self.delegate respondsToSelector:aSelector])
+        return YES;
+    
+    return NO;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+- (id)forwardingTargetForSelector:(SEL)aSelector
 {
-    [self.delegate scrollViewWillBeginDragging:scrollView];
+    if ([self.delegate respondsToSelector:aSelector])
+        return self.delegate;
+
+    // Always call parent object for default
+    return [super forwardingTargetForSelector:aSelector];
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
@@ -131,63 +141,11 @@
     // Make sure that we scroll to the nearest tick mark on the dial.
     *targetContentOffset = [self scrollToOffset:(*targetContentOffset)];
     
-    [self.delegate scrollViewWillEndDragging:scrollView
-                                withVelocity:velocity
-                         targetContentOffset:targetContentOffset];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    [self.delegate scrollViewDidEndDragging:scrollView
-                             willDecelerate:decelerate];
-}
-
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
-{
-    return [self.delegate scrollViewShouldScrollToTop:scrollView];
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
-{
-    [self.delegate scrollViewDidScrollToTop:scrollView];
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
-    [self.delegate scrollViewWillBeginDecelerating:scrollView];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self.delegate scrollViewDidEndDecelerating:scrollView];
-}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return [self.delegate viewForZoomingInScrollView:scrollView];
-}
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
-{
-    [self.delegate scrollViewWillBeginZooming:scrollView
-                                     withView:view];
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    [self.delegate scrollViewDidEndZooming:scrollView
-                                  withView:view
-                                   atScale:scale];
-}
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
-{
-    [self.delegate scrollViewDidZoom:scrollView];
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    [self.delegate scrollViewDidEndScrollingAnimation:scrollView];
+    if ([self.delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)])
+        
+        [self.delegate scrollViewWillEndDragging:scrollView
+                                    withVelocity:velocity
+                             targetContentOffset:targetContentOffset];
 }
 
 

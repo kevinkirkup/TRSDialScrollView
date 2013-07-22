@@ -10,7 +10,7 @@
 #import "TRSDialScrollView.h"
 #import "TRSViewController.h"
 
-@interface TRSViewController ()
+@interface TRSViewController ()  <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
 
@@ -50,6 +50,7 @@
     
     _dialView.currentValue = 10;
 
+    _dialView.delegate = self;
     
     NSLog(@"Current Value = %i", _dialView.currentValue);
     
@@ -62,6 +63,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{    
+    NSLog(@"scrollViewDidEndDecelerating:");
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollViewWillBeginDragging:");
+}
 
 
 @end
