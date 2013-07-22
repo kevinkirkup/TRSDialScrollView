@@ -9,18 +9,17 @@
 
 #import "TRSDialView.h"
 
-#define DEFAULT_FONT_NAME       (@"HelveticaNeue")
-#define DEFAULT_LABEL_FONT_SIZE (30)
+NSString * const kTRSDialViewDefaultFont = @"HelveticaNeue";
 
+const NSInteger kTRSDialViewDefautLabelFontSize = 30;
 
-#define DEFAULT_MINOR_TICK_DISTANCE   (16)
-#define DEFAULT_MINOR_TICK_LENGTH     (19)
-#define DEFAULT_MINOR_TICK_WIDTH      (1.0)
+const CGFloat kTRSDialViewDefaultMinorTickDistance = 16.0f;
+const CGFloat kTRSDialViewDefaultMinorTickLength   = 19.0f;
+const CGFloat KTRSDialViewDefaultMinorTickWidth    =  1.0f;
 
-#define DEFAULT_MAJOR_TICK_DIVISIONS  (10)
-#define DEFAULT_MAJOR_TICK_LENGTH     (31)
-#define DEFAULT_MAJOR_TICK_WIDTH      (4.0)
-
+const NSInteger kTRSDialViewDefaultMajorTickDivisions = 10;
+const CGFloat kTRSDialViewDefaultMajorTickLength      = 31.0f;
+const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
 
 
 @interface TRSDialView ()
@@ -37,8 +36,8 @@
         _minimum = 0;
         _maximum = 0;
 
-        _minorTicksPerMajorTick = DEFAULT_MAJOR_TICK_DIVISIONS;
-        _minorTickDistance = DEFAULT_MINOR_TICK_DISTANCE;
+        _minorTicksPerMajorTick = kTRSDialViewDefaultMajorTickDivisions;
+        _minorTickDistance = kTRSDialViewDefaultMinorTickDistance;
 
         _backgroundColor = [UIColor grayColor];
 
@@ -46,16 +45,16 @@
         _labelFillColor = [UIColor whiteColor];
         _labelStrokeWidth = 1.0;
 
-        _labelFont = [UIFont fontWithName:DEFAULT_FONT_NAME
-                                     size:DEFAULT_LABEL_FONT_SIZE];
+        _labelFont = [UIFont fontWithName:kTRSDialViewDefaultFont
+                                     size:kTRSDialViewDefautLabelFontSize];
 
         _minorTickColor = [UIColor colorWithWhite:0.158 alpha:1.000];
-        _minorTickLength = DEFAULT_MINOR_TICK_LENGTH;
-        _minorTickWidth = DEFAULT_MINOR_TICK_WIDTH;
+        _minorTickLength = kTRSDialViewDefaultMinorTickLength;
+        _minorTickWidth = KTRSDialViewDefaultMinorTickWidth;
 
         _majorTickColor = [UIColor colorWithRed:0.482 green:0.008 blue:0.027 alpha:1.000];
-        _majorTickLength = DEFAULT_MAJOR_TICK_LENGTH;
-        _majorTickWidth = DEFAULT_MAJOR_TICK_WIDTH;
+        _majorTickLength = kTRSDialViewDefaultMajorTickLength;
+        _majorTickWidth = kTRSDialViewDefaultMajorTickWidth;
 
         _shadowColor = [UIColor colorWithWhite:1.000 alpha:1.000];
         _shadowOffset = CGSizeMake(1, 1);
