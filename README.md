@@ -1,6 +1,9 @@
 TRSDialScrollView
 =================
 
+[![Version](https://cocoapod-badges.herokuapp.com/v/TRSDialScrollView/badge.svg)](https://cocoapod-badges.herokuapp.com/v/TRSDialScrollView/badge.svg)
+[![Platform](https://cocoapod-badges.herokuapp.com/p/TRSDialScrollView/badge.svg)](https://cocoapod-badges.herokuapp.com/p/TRSDialScrollView/badge.svg)
+
 This is a custom UIScrollView that I used for one of my apps.
 It's a customizable dial control for all your control displaying needs.
 Includes customization through UIAppearance for all major properties.
