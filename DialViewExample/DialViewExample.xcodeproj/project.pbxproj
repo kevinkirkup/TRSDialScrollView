@@ -50,7 +50,6 @@
 		20FF7DAF177FB28000E8AF5A /* TRSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRSViewController.h; sourceTree = "<group>"; };
 		20FF7DB0177FB28000E8AF5A /* TRSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRSViewController.m; sourceTree = "<group>"; };
 		HYXIFWTDXJPPRRMDCEPMDTJH /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		QMNTBWVDMICWTEJGUAKXRYSM /* SparkInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SparkInspector.framework; path = "/Applications/Spark Inspector.app/Contents/Resources/Frameworks/SparkInspector.framework"; sourceTree = "<group>"; };
 		THBDITSPYVFDWQYYBDCIDIXG /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -106,7 +105,6 @@
 				20FF7D98177FB28000E8AF5A /* CoreGraphics.framework */,
 				HYXIFWTDXJPPRRMDCEPMDTJH /* QuartzCore.framework */,
 				THBDITSPYVFDWQYYBDCIDIXG /* libz.dylib */,
-				QMNTBWVDMICWTEJGUAKXRYSM /* SparkInspector.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
