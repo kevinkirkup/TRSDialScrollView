@@ -41,6 +41,7 @@ pod 'TRSDialScrollView', '>= 1.0'
 {
   NSInteger value = self.dialView.currentValue;
 }
+```
 
 ## Credits
 
