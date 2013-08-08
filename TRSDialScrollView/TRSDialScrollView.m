@@ -59,6 +59,9 @@
     [_scrollView addSubview:_dialView];
     [self addSubview:_scrollView];
     [self addSubview:_overlayView];
+    
+    // Clips the Dial View to the bounds of this view
+    self.clipsToBounds = YES;
 
 }
 
@@ -148,6 +151,25 @@
                              targetContentOffset:targetContentOffset];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchBegan");
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchesCancelled");
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchesEnded");
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchesMoved");
+}
 
 #pragma mark - Properties
 
