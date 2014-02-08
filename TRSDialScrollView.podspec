@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TRSDialScrollView"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "TRSDialScrollView is a customizable UIScrollView for use as a dial control."
   s.homepage     = "https://github.com/kevinkirkup/TRSDialScrollView"
   s.screenshots  = "github.com/kevinkirkup/TRSDialScrollView/blob/master/images/TRSDialScrollView.png"
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Kevin S Kirkup" => "kevin.kirkup@gmail.com" }
 
-  s.source       = { :git => "https://github.com/kevinkirkup/TRSDialScrollView.git", :tag => "1.0.5" }
+  s.source       = { :git => "https://github.com/kevinkirkup/TRSDialScrollView.git", :tag => "1.0.6" }
 
   s.platform     = :ios, '6.0'
 
