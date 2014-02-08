@@ -252,9 +252,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"/Applications/Spark Inspector.app/Contents/Resources/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Spark Inspector.app/Contents/Resources/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -305,9 +303,8 @@
 		20FF7DB5177FB28000E8AF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"/Applications/Spark Inspector.app/Contents/Resources/Frameworks\"",
-				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "\"/Applications/Spark Inspector.app/Contents/Resources/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DialViewExample/DialViewExample-Prefix.pch";
 				INFOPLIST_FILE = "DialViewExample/DialViewExample-Info.plist";
@@ -320,6 +317,7 @@
 		20FF7DB6177FB28000E8AF5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DialViewExample/DialViewExample-Prefix.pch";
 				INFOPLIST_FILE = "DialViewExample/DialViewExample-Info.plist";

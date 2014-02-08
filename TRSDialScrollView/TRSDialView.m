@@ -78,6 +78,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
     NSLog(@"frame = %@", NSStringFromCGRect(frame));
     
     self.frame = frame;
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Drawing
