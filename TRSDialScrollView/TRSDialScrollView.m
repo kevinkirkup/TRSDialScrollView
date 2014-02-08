@@ -98,7 +98,7 @@
     
     // Update the dial view
     [self.dialView setDialRangeFrom:from to:to];
-    
+
     self.scrollView.contentSize = CGSizeMake(self.dialView.frame.size.width, self.bounds.size.height);
 }
 
