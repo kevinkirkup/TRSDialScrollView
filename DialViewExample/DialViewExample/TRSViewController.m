@@ -52,7 +52,7 @@
 
     _dialView.delegate = self;
     
-    NSLog(@"Current Value = %i", _dialView.currentValue);
+    NSLog(@"Current Value = %li", (long)_dialView.currentValue);
     
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -67,12 +67,12 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {    
-    NSLog(@"scrollViewDidEndDecelerating:");
+    NSLog(@"scrollViewDidEndDecelerating: %li", (long)_dialView.currentValue);
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollViewWillBeginDragging:");
+    NSLog(@"scrollViewWillBeginDragging: %li", (long)_dialView.currentValue);
 }
 
 

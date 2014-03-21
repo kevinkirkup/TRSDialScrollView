@@ -155,7 +155,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
 
 }
 
-- (void)drawTicksWithContext:(CGContextRef)context atX:(int)x
+- (void)drawTicksWithContext:(CGContextRef)context atX:(long)x
 {
 
     CGPoint point = CGPointMake(x, 0);
@@ -230,7 +230,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
     CGContextFillRect(context, rect);
     
     // Add the tick Marks
-    for (int i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
+    for (long i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
 
         // After
         if (i > (self.frame.size.width - self.leading))
@@ -247,9 +247,9 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
  * Method to check if there is a major tick and the specified point offset
  * @param x [in] the pixel offset
  */
-- (BOOL)isMajorTick:(int)x {
+- (BOOL)isMajorTick:(long)x {
 
-    int tick_number = (x - self.leading) / self.minorTickDistance;
+    long tick_number = (x - self.leading) / self.minorTickDistance;
 
     return (tick_number % self.minorTicksPerMajorTick) == 0;
 }
