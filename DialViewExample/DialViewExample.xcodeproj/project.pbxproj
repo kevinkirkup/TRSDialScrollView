@@ -11,6 +11,7 @@
 		200E24A517850CE300DF6C0F /* TRSDialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E24A217850CE300DF6C0F /* TRSDialScrollView.m */; };
 		202273E41783CFA800EBCB18 /* DialShadding.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E21783CFA800EBCB18 /* DialShadding.png */; };
 		202273E51783CFA800EBCB18 /* DialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 202273E31783CFA800EBCB18 /* DialBackground.png */; };
+		20415F251940318200756D02 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20415F241940318200756D02 /* CoreText.framework */; };
 		20FF7D95177FB28000E8AF5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D94177FB28000E8AF5A /* UIKit.framework */; };
 		20FF7D97177FB28000E8AF5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D96177FB28000E8AF5A /* Foundation.framework */; };
 		20FF7D99177FB28000E8AF5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FF7D98177FB28000E8AF5A /* CoreGraphics.framework */; };
@@ -33,6 +34,7 @@
 		200E24A317850CE300DF6C0F /* TRSDialScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSDialScrollView.h; path = ../../TRSDialScrollView/TRSDialScrollView.h; sourceTree = "<group>"; };
 		202273E21783CFA800EBCB18 /* DialShadding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialShadding.png; sourceTree = "<group>"; };
 		202273E31783CFA800EBCB18 /* DialBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialBackground.png; sourceTree = "<group>"; };
+		20415F241940318200756D02 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		20FF7D91177FB28000E8AF5A /* DialViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FF7D94177FB28000E8AF5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		20FF7D96177FB28000E8AF5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20415F251940318200756D02 /* CoreText.framework in Frameworks */,
 				20FF7D95177FB28000E8AF5A /* UIKit.framework in Frameworks */,
 				20FF7D97177FB28000E8AF5A /* Foundation.framework in Frameworks */,
 				20FF7D99177FB28000E8AF5A /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +103,7 @@
 		20FF7D93177FB28000E8AF5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20415F241940318200756D02 /* CoreText.framework */,
 				20FF7D94177FB28000E8AF5A /* UIKit.framework */,
 				20FF7D96177FB28000E8AF5A /* Foundation.framework */,
 				20FF7D98177FB28000E8AF5A /* CoreGraphics.framework */,
@@ -264,7 +268,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -293,7 +297,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

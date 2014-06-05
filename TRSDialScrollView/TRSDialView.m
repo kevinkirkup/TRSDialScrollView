@@ -7,6 +7,8 @@
  *                                                 *
  ***************************************************/
 
+#import "CoreText/CoreText.h"
+
 #import "TRSDialView.h"
 
 NSString * const kTRSDialViewDefaultFont = @"HelveticaNeue";
@@ -89,7 +91,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
                    fillColor:(UIColor *)fillColor
                  strokeColor:(UIColor *)strokeColor {
     
-    CGSize boundingBox = [text sizeWithFont:self.labelFont];
+    CGSize boundingBox = [text sizeWithAttributes:@{NSFontAttributeName:self.labelFont}];
     
     CGFloat label_y_offset = self.majorTickLength + (boundingBox.height / 2);
 
@@ -115,10 +117,24 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
     
     CGContextSetTextDrawingMode(context, mode);
 
-    [text drawInRect:CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height)
-            withFont:self.labelFont
-       lineBreakMode:NSLineBreakByTruncatingTail
-           alignment:NSTextAlignmentCenter];
+    // The center position
+    CGRect textRect = CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height);
+
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setLineBreakMode:NSLineBreakByTruncatingTail];
+    [style setAlignment:NSTextAlignmentCenter];
+
+    NSDictionary *attributes = @{
+                                 NSStrokeWidthAttributeName : @(-self.labelStrokeWidth),
+                                 NSFontAttributeName : self.labelFont,
+                                 NSForegroundColorAttributeName : fillColor,
+                                 NSStrokeColorAttributeName : strokeColor
+                                 };
+
+
+    [text drawInRect:textRect
+      withAttributes:attributes];
+
 
 }
 
@@ -155,7 +171,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
 
 }
 
-- (void)drawTicksWithContext:(CGContextRef)context atX:(int)x
+- (void)drawTicksWithContext:(CGContextRef)context atX:(long)x
 {
 
     CGPoint point = CGPointMake(x, 0);
@@ -230,7 +246,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
     CGContextFillRect(context, rect);
     
     // Add the tick Marks
-    for (int i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
+    for (long i = self.leading; i < rect.size.width; i += self.minorTickDistance) {
 
         // After
         if (i > (self.frame.size.width - self.leading))
@@ -247,9 +263,9 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
  * Method to check if there is a major tick and the specified point offset
  * @param x [in] the pixel offset
  */
-- (BOOL)isMajorTick:(int)x {
+- (BOOL)isMajorTick:(long)x {
 
-    int tick_number = (x - self.leading) / self.minorTickDistance;
+    long tick_number = (x - self.leading) / self.minorTickDistance;
 
     return (tick_number % self.minorTicksPerMajorTick) == 0;
 }
