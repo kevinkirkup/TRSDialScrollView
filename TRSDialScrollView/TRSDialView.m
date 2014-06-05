@@ -7,6 +7,8 @@
  *                                                 *
  ***************************************************/
 
+#import "CoreText/CoreText.h"
+
 #import "TRSDialView.h"
 
 NSString * const kTRSDialViewDefaultFont = @"HelveticaNeue";
@@ -89,7 +91,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
                    fillColor:(UIColor *)fillColor
                  strokeColor:(UIColor *)strokeColor {
     
-    CGSize boundingBox = [text sizeWithFont:self.labelFont];
+    CGSize boundingBox = [text sizeWithAttributes:@{NSFontAttributeName:self.labelFont}];
     
     CGFloat label_y_offset = self.majorTickLength + (boundingBox.height / 2);
 
@@ -115,10 +117,24 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
     
     CGContextSetTextDrawingMode(context, mode);
 
-    [text drawInRect:CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height)
-            withFont:self.labelFont
-       lineBreakMode:NSLineBreakByTruncatingTail
-           alignment:NSTextAlignmentCenter];
+    // The center position
+    CGRect textRect = CGRectMake(label_x, point.y + label_y_offset, boundingBox.width, boundingBox.height);
+
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setLineBreakMode:NSLineBreakByTruncatingTail];
+    [style setAlignment:NSTextAlignmentCenter];
+
+    NSDictionary *attributes = @{
+                                 NSStrokeWidthAttributeName : @(-self.labelStrokeWidth),
+                                 NSFontAttributeName : self.labelFont,
+                                 NSForegroundColorAttributeName : fillColor,
+                                 NSStrokeColorAttributeName : strokeColor
+                                 };
+
+
+    [text drawInRect:textRect
+      withAttributes:attributes];
+
 
 }
 
