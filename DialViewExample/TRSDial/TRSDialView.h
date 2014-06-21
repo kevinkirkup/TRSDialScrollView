@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface TRSDialView : UIView <UIAppearance>
 
 #pragma mark - Methods

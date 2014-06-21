@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface TRSDialScrollView : UIView <UIAppearance>
 
 /**
@@ -27,22 +28,22 @@
 /**
  * The number of minor ticks per major tick
  */
-@property (assign, nonatomic) NSInteger minorTicksPerMajorTick UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable NSInteger minorTicksPerMajorTick UI_APPEARANCE_SELECTOR;
 
 /**
  * The number of pixels/points between minor ticks
  */
-@property (assign, nonatomic) NSInteger minorTickDistance UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable NSInteger minorTickDistance UI_APPEARANCE_SELECTOR;
 
 /**
  * The image to use as the background image
  */
-@property (strong, nonatomic) UIColor *backgroundColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *backgroundColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The image to overlay on top of the scroll dial
  */
-@property (strong, nonatomic) UIColor *overlayColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *overlayColor UI_APPEARANCE_SELECTOR;
 
 
 #pragma mark - Tick Label Properties
@@ -50,73 +51,73 @@
 /**
  * The tick label stroke color
  */
-@property (strong, nonatomic) UIColor *labelStrokeColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *labelStrokeColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The width of the stroke line used to trace the Label text
  */
-@property (assign, nonatomic) CGFloat labelStrokeWidth UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat labelStrokeWidth UI_APPEARANCE_SELECTOR;
 
 /**
  * The tick label fill color
  */
-@property (strong, nonatomic) UIColor *labelFillColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *labelFillColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The tick label font
  */
-@property (strong, nonatomic) UIFont *labelFont UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIFont *labelFont UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Minor Tick Properties
 
 /**
  * The minor tick color
  */
-@property (strong, nonatomic) UIColor *minorTickColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *minorTickColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The length of the minor ticks
  */
-@property (assign, nonatomic) CGFloat minorTickLength UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat minorTickLength UI_APPEARANCE_SELECTOR;
 
 /**
  * The length of the Major Tick
  */
-@property (assign, nonatomic) CGFloat minorTickWidth UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat minorTickWidth UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Major Tick Properties
 
 /**
  * The color of the Major Tick
  */
-@property (strong, nonatomic) UIColor *majorTickColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *majorTickColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The length of the Major Tick
  */
-@property (assign, nonatomic) CGFloat majorTickLength UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat majorTickLength UI_APPEARANCE_SELECTOR;
 
 /**
  * The width of the Major Tick
  */
-@property (assign, nonatomic) CGFloat majorTickWidth UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat majorTickWidth UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Shadow Properties
 
 /**
  * The shadow color
  */
-@property (strong, nonatomic) UIColor *shadowColor UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) IBInspectable UIColor *shadowColor UI_APPEARANCE_SELECTOR;
 
 /**
  * The shadow offset
  */
-@property (assign, nonatomic) CGSize shadowOffset UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGSize shadowOffset UI_APPEARANCE_SELECTOR;
 
 /**
  * The shadow blur radius
  */
-@property (assign, nonatomic) CGFloat shadowBlur UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) IBInspectable CGFloat shadowBlur UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Methods
 

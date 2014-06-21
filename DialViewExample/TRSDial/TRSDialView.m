@@ -30,7 +30,7 @@ const CGFloat kTRSDialViewDefaultMajorTickWidth       = 4.0f;
 
 @implementation TRSDialView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
