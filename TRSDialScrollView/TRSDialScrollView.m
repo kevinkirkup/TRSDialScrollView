@@ -65,7 +65,7 @@
 
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -77,7 +77,7 @@
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     
@@ -149,6 +149,12 @@
         [self.delegate scrollViewWillEndDragging:scrollView
                                     withVelocity:velocity
                              targetContentOffset:targetContentOffset];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)])
+        [self.delegate scrollViewDidScroll:scrollView];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
