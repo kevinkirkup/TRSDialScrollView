@@ -151,6 +151,12 @@
                              targetContentOffset:targetContentOffset];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)])
+        [self.delegate scrollViewDidScroll:scrollView];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"touchBegan");

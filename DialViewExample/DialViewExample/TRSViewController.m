@@ -75,5 +75,19 @@
     NSLog(@"scrollViewWillBeginDragging: %li", (long)_dialView.currentValue);
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    static NSInteger last_value = 0;
+
+    // Calculate the value based on the content offset
+    NSInteger value = self.dialView.currentValue;
+
+    if (value != last_value) {
+        NSLog(@"Metric: value=%li", (long)value);
+    }
+    
+    last_value = value;
+}
+
 
 @end
